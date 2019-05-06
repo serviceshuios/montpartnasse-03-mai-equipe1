@@ -11,7 +11,6 @@ import com.infotel.MavenSpringDataMvc.metier.SocieteTransport;
 import com.infotel.MavenSpringDataMvc.service.Iservice;
 
 @Controller
-
 public class SocieteController {
 	@Autowired
     private Iservice service;
