@@ -1,3 +1,6 @@
+/**
+ * ce package re
+ */
 package com.infotel.MavenSpringDataMvc.service;
 
 import java.util.List;

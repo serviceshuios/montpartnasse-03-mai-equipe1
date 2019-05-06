@@ -1,6 +1,4 @@
-/**
- * ce package consiste à presenter la classe Aerienne 
- */
+
 package com.infotel.MavenSpringDataMvc.metier;
 
 import javax.persistence.DiscriminatorValue;

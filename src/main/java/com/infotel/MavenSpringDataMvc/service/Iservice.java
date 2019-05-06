@@ -33,8 +33,10 @@ public interface Iservice {
 	public SocieteTransport ajouterSocieteTransport(SocieteTransport s);
 	public SocieteTransport getSocieteTransport(int idSociete);
 	public void supprimerSocieteTransport(int idSociete);
-
 	public SocieteTransport modifierSocieteTransport(SocieteTransport s);
 	public Iterable<SocieteTransport> findAllSocieteTransport();
+	
+	void attribuerAerienneSociete(int idSociete, int idCargaison);
+	void attribuerRoutiereSociete(int idSociete, int idCargaison);
 	
 }
