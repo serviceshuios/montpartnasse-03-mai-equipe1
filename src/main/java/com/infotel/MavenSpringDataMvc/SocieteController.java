@@ -11,14 +11,13 @@ import com.infotel.MavenSpringDataMvc.metier.SocieteTransport;
 import com.infotel.MavenSpringDataMvc.service.Iservice;
 
 @Controller
-
 public class SocieteController {
 	@Autowired
     private Iservice service;
 
     @RequestMapping(value = "/indexSociete", method = RequestMethod.GET)
     public String lister(Model model) {
-        model.addAttribute("societetransport", new SocieteController());
+        model.addAttribute("societetransport", new SocieteTransport());
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "societestransports";
     }
