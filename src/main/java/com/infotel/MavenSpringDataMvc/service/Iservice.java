@@ -21,6 +21,7 @@ public interface Iservice {
 	public SocieteTransport ajouterSocieteTransport(SocieteTransport s);
 	public SocieteTransport getSocieteTransport(int idSociete);
 	public void supprimerSocieteTransport(int idSociete);
+
 	public SocieteTransport modifierSocieteTransport(SocieteTransport s);
 	public Iterable<SocieteTransport> findAllSocieteTransport();
 	//public void modifierSocieteTransportV2(String nomSociete, String numSiret, Date dateCreation,Integer idSociete);

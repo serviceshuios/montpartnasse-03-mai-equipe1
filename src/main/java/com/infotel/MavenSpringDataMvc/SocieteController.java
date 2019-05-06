@@ -18,7 +18,7 @@ public class SocieteController {
 
     @RequestMapping(value = "/indexSociete", method = RequestMethod.GET)
     public String lister(Model model) {
-        model.addAttribute("societetransport", new SocieteController());
+        model.addAttribute("societetransport", new SocieteTransport());
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "societestransports";
     }
@@ -37,7 +37,7 @@ public class SocieteController {
             return "societestransports";
         }
     }
-        @RequestMapping(value = "/deleteSociete")
+        @RequestMapping(value = "/deleteSociete")//je dois trouver ce bouton dans jsp
         public String delete(@RequestParam int idSociete, Model model) {
             service.supprimerSocieteTransport(idSociete);
             model.addAttribute("societetransport", new SocieteTransport());
