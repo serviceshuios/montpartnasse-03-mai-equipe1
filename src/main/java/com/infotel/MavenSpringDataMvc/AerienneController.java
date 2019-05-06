@@ -19,36 +19,36 @@ public class AerienneController {
 	@RequestMapping(value = "/indexAerienne", method = RequestMethod.GET)
 	public String pageAerienne(Model model) {
 		model.addAttribute("aerienne", new Aerienne()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
-		model.addAttribute("aeriennes", service.findAllCargaison());		//remlpi la liste des cargaisons aeriennes en jsp
+		model.addAttribute("aeriennes", service.findAllAerienne());		//remlpi la liste des cargaisons aeriennes en jsp
 		return "aerienne";									//designe la jsp
 	}
 	
 	@RequestMapping(value = "/saveAerienne")
 	public String saveAer(Aerienne aerienne, Model model) {
 		if (aerienne.getIdCargaison() == 0) {
-            service.ajouterCargaison(aerienne);
+            service.ajouterAerienne(aerienne);
             model.addAttribute("aerienne", new Aerienne());
-            model.addAttribute("aeriennes", service.findAllCargaison());
+            model.addAttribute("aeriennes", service.findAllAerienne());
             return "aerienne";
         } else {
-            service.modifierCargaison(aerienne);
+            service.modifierAerienne(aerienne);
             model.addAttribute("aerienne", new Aerienne());
-            model.addAttribute("aeriennes", service.findAllCargaison());
+            model.addAttribute("aeriennes", service.findAllAerienne());
             return "aerienne";
         }
 	}
 	
 	@RequestMapping(value = "/deleteAerienne")
     public String deleteAer(@RequestParam int idAerienne, Model model) {
-        service.supprimerCargaison(idAerienne);
+        service.supprimerAerienne(idAerienne);
         model.addAttribute("aerienne", new Aerienne());
-        model.addAttribute("aeriennes", service.findAllCargaison());
+        model.addAttribute("aeriennes", service.findAllAerienne());
         return "aerienne";
     }
     @RequestMapping(value = "/editAerienne")
     public String editAer(@RequestParam int idAerienne, Model model) {
-        model.addAttribute("aerienne", service.getCargaison(idAerienne));
-        model.addAttribute("aeriennes", service.findAllCargaison());
+        model.addAttribute("aerienne", service.getAerienne(idAerienne));
+        model.addAttribute("aeriennes", service.findAllAerienne());
         return "aerienne";
     }
 }
