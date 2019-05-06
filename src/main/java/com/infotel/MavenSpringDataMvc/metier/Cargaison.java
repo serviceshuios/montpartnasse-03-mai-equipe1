@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value="prototype")
 public abstract class Cargaison {
+	
 	public SocieteTransport getSocietetransport() {
 		return societetransport;
 	}
@@ -34,6 +35,7 @@ public abstract class Cargaison {
 	protected String destination;
 	@ManyToOne 
 	private SocieteTransport societetransport;
+	
 	public int getIdCargaison() {
 		return idCargaison;
 	}

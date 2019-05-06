@@ -127,5 +127,18 @@ public class ServiceImpl implements Iservice{
 	public Iterable<SocieteTransport> findAllSocieteTransport() {
 		// TODO Auto-generated method stub
 		return societetransportRepository.findAll();
+	}
+	
+	
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour attribuer une cargaison à une societe +++++++++++++++++++++++++++++++++
+	@Override
+	public void attribuerAerienneSociete(int idSociete, int idCargaison) {
+		// TODO Auto-generated method stub
+		aerienneRepository.attribuerAerienneSociete(idSociete, idCargaison);
+	}
+	@Override
+	public void attribuerRoutiereSociete(int idSociete, int idCargaison) {
+		// TODO Auto-generated method stub
+		routiereRepository.attribuerRoutiereSociete(idSociete, idCargaison);
 	}	
 }

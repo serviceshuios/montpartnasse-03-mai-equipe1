@@ -31,7 +31,7 @@
 				<tr>
 					<td>DateDeCreation:</td>
 					<td><f:input path="dateCreation" /></td>
-					<td><f:errors path="dateCreation" cssClass="error"/></td>
+					<td><f:errors path="dateCreation" type="date" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="enregistrer" /></td>
