@@ -1,19 +1,31 @@
 package com.infotel.MavenSpringDataMvc.service;
 
 
-import com.infotel.MavenSpringDataMvc.metier.Cargaison;
+import java.util.List;
+
+import com.infotel.MavenSpringDataMvc.metier.Aerienne;
+import com.infotel.MavenSpringDataMvc.metier.Routiere;
 import com.infotel.MavenSpringDataMvc.metier.SocieteTransport;
 
 public interface Iservice {
 
-	//++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour les cargaisons +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour les aeriennes +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	
-	public Cargaison ajouterCargaison(Cargaison c);
-	public Cargaison getCargaison(int idCargaison);
-	public void supprimerCargaison(int idCargaison);
-	public Cargaison modifierCargaison(Cargaison c);
-	public Iterable<Cargaison> findAllCargaison();
-	//public void modifierCargaisonV2(String nomCargaison, String depart, String destination, Integer idCargaison);
+	public Aerienne ajouterAerienne(Aerienne c);
+	public Aerienne getAerienne(int idAerienne);
+	public void supprimerAerienne(int idAerienne);
+	public Aerienne modifierAerienne(Aerienne c);
+	public List<Aerienne> findAllAerienne();
+	
+	
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour les routieres +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	public Routiere ajouterRoutiere(Routiere c);
+	public Routiere getRoutiere(int idRoutiere);
+	public void supprimerRoutiere(int idRoutiere);
+	public Routiere modifierRoutiere(Routiere c);
+	public List<Routiere> findAllRoutiere();
+	
 	
 	
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour les societes de transport +++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -23,5 +35,5 @@ public interface Iservice {
 	public void supprimerSocieteTransport(int idSociete);
 	public SocieteTransport modifierSocieteTransport(SocieteTransport s);
 	public Iterable<SocieteTransport> findAllSocieteTransport();
-	//public void modifierSocieteTransportV2(String nomSociete, String numSiret, Date dateCreation,Integer idSociete);
+	
 }

@@ -1,24 +1,38 @@
 package com.infotel.MavenSpringDataMvc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.infotel.MavenSpringDataMvc.dao.CargaisonRepository;
+import com.infotel.MavenSpringDataMvc.dao.AerienneRepository;
+import com.infotel.MavenSpringDataMvc.dao.RoutiereRepository;
 import com.infotel.MavenSpringDataMvc.dao.SocieteTransportRepository;
-import com.infotel.MavenSpringDataMvc.metier.Cargaison;
+import com.infotel.MavenSpringDataMvc.metier.Aerienne;
+import com.infotel.MavenSpringDataMvc.metier.Routiere;
 import com.infotel.MavenSpringDataMvc.metier.SocieteTransport;
 
 @Service
 public class ServiceImpl implements Iservice{
 
 	@Autowired
-	private CargaisonRepository cargaisonRepository;
+	private AerienneRepository aerienneRepository;
 	
-	public CargaisonRepository getCargaisonRepository() {
-		return cargaisonRepository;
+	public AerienneRepository getAerienneRepository() {
+		return aerienneRepository;
 	}
-	public void setCargaisonRepository(CargaisonRepository cargaisonRepository) {
-		this.cargaisonRepository = cargaisonRepository;
+	public void setAerienneRepository(AerienneRepository aerienneRepository) {
+		this.aerienneRepository = aerienneRepository;
+	}
+	
+	@Autowired
+	private RoutiereRepository routiereRepository;
+
+	public RoutiereRepository getRoutiereRepository() {
+		return routiereRepository;
+	}
+	public void setRoutiereRepository(RoutiereRepository routiereRepository) {
+		this.routiereRepository = routiereRepository;
 	}
 
 	@Autowired
@@ -31,37 +45,61 @@ public class ServiceImpl implements Iservice{
 		this.societetransportRepository = societetransportRepository;
 	}
 	
-	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour cargaisons ++++++++++++++++++++++++++++++++++++++++++++++
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour aeriennes ++++++++++++++++++++++++++++++++++++++++++++++
 	@Override
-	public Cargaison ajouterCargaison(Cargaison c) {
+	public Aerienne ajouterAerienne(Aerienne c) {
 		// TODO Auto-generated method stub
-		return cargaisonRepository.save(c);
+		return aerienneRepository.save(c);
 	}
 	@Override
-	public Cargaison getCargaison(int idCargaison) {
+	public Aerienne getAerienne(int idAerienne) {
 		// TODO Auto-generated method stub
-		return cargaisonRepository.findById(idCargaison).get();
+		return aerienneRepository.findById(idAerienne).get();
 	}
 	@Override
-	public void supprimerCargaison(int idCargaison) {
+	public void supprimerAerienne(int idAerienne) {
 		// TODO Auto-generated method stub
-		cargaisonRepository.deleteById(idCargaison);
+		aerienneRepository.deleteById(idAerienne);
 	}
 	@Override
-	public Cargaison modifierCargaison(Cargaison c) {
+	public Aerienne modifierAerienne(Aerienne c) {
 		// TODO Auto-generated method stub
-		return cargaisonRepository.save(c);
+		return aerienneRepository.save(c);
 	}
 	@Override
-	public Iterable<Cargaison> findAllCargaison() {
+	public List<Aerienne> findAllAerienne() {
 		// TODO Auto-generated method stub
-		return cargaisonRepository.findAll();
+		return aerienneRepository.findAll();
 	}
-	/*@Override
-	public void modifierCargaisonV2(String nomCargaison, String depart, String destination, Integer idCargaison) {
+	
+	
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour routieres ++++++++++++++++++++++++++++++++++++++++++++++
+	@Override
+	public Routiere ajouterRoutiere(Routiere c) {
 		// TODO Auto-generated method stub
-		cargaisonRepository.modifierCargaisonV2(nomCargaison, depart, destination, idCargaison);
-	}*/
+		return routiereRepository.save(c);
+	}
+	@Override
+	public Routiere getRoutiere(int idRoutiere) {
+		// TODO Auto-generated method stub
+		return routiereRepository.findById(idRoutiere).get();
+	}
+	@Override
+	public void supprimerRoutiere(int idRoutiere) {
+		// TODO Auto-generated method stub
+		routiereRepository.deleteById(idRoutiere);
+	}
+	@Override
+	public Routiere modifierRoutiere(Routiere c) {
+		// TODO Auto-generated method stub
+		return routiereRepository.save(c);
+	}
+	@Override
+	public List<Routiere> findAllRoutiere() {
+		// TODO Auto-generated method stub
+		return routiereRepository.findAll();
+	}
+	
 	
 	
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Methodes pour les societes de transport ++++++++++++++++++++++++++++++++++++++++++++++
@@ -89,10 +127,5 @@ public class ServiceImpl implements Iservice{
 	public Iterable<SocieteTransport> findAllSocieteTransport() {
 		// TODO Auto-generated method stub
 		return societetransportRepository.findAll();
-	}
-	/*@Override
-	public void modifierSocieteTransportV2(String nomSociete, String numSiret, Date dateCreation, Integer idSociete) {
-		// TODO Auto-generated method stub
-		societetransportRepository.modifierSocieteTransportV2(nomSociete, numSiret, dateCreation, idSociete);
-	}*/	
+	}	
 }
