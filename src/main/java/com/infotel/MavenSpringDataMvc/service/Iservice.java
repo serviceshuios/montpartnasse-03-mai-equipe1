@@ -1,3 +1,6 @@
+/**
+ * Cette classe est l'interface où sont repertoriées toutes les methodes utilisées dans le projet
+ */
 package com.infotel.MavenSpringDataMvc.service;
 
 
