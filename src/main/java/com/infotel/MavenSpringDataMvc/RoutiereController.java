@@ -16,6 +16,11 @@ public class RoutiereController {
 	@Autowired
 	Iservice service;
 	
+	/**
+	 * Cette methode permet d'aller sur la jsp concernant les cargaisons routieres avec des champs libres
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/indexRoutiere", method = RequestMethod.GET)
 	public String pageRoutiere(Model model) {
 		model.addAttribute("routiere", new Routiere()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
@@ -24,6 +29,12 @@ public class RoutiereController {
 		return "routiere";									//designe la jsp
 	}
 	
+	/**
+	 * Cette methode permet, en cliquant sur "enregistrer", soit d'ajouter, soit de modifier la cargaison en question
+	 * @param routiere
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/saveRoutiere")
 	public String saveRout(Routiere routiere, Model model) {
 		if (routiere.getIdCargaison() == 0) {
@@ -41,6 +52,12 @@ public class RoutiereController {
         }
 	}
 	
+	/**
+	 * Cette methode permet de supprimer une cargaison de la base de données en utilisant le lien "supprimer"
+	 * @param idRoutiere
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/deleteRoutiere")
     public String deleteRout(@RequestParam int idRoutiere, Model model) {
         service.supprimerRoutiere(idRoutiere);
@@ -49,6 +66,13 @@ public class RoutiereController {
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "routiere";
     }
+	
+	/**
+	 * Cette methode permet de mettre les attributs d'une cargaison existante en BDD dans les champs afin de les modifier 
+	 * @param idRoutiere
+	 * @param model
+	 * @return
+	 */
     @RequestMapping(value = "/editRoutiere")
     public String editRout(@RequestParam int idRoutiere, Model model) {
         model.addAttribute("routiere", service.getRoutiere(idRoutiere));

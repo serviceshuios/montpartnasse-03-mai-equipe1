@@ -1,3 +1,7 @@
+/**
+ * Cette classe permet de gerer la creation, modification et suppression de cargaisons aeriennes en base de données
+ */
+
 package com.infotel.MavenSpringDataMvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,11 @@ public class AerienneController {
 	@Autowired
 	Iservice service;
 	
+	/**
+	 * Cette methode permet d'aller sur la jsp concernant les cargaisons aeriennes avec des champs libres
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/indexAerienne", method = RequestMethod.GET)
 	public String pageAerienne(Model model) {
 		model.addAttribute("aerienne", new Aerienne()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
@@ -24,6 +33,12 @@ public class AerienneController {
 		return "aerienne";									//designe la jsp
 	}
 	
+	/**
+	 * Cette methode permet, en cliquant sur "enregistrer", soit d'ajouter, soit de modifier la cargaison en question
+	 * @param aerienne
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/saveAerienne")
 	public String saveAer(Aerienne aerienne, Model model) {
 		if (aerienne.getIdCargaison() == 0) {
@@ -41,6 +56,12 @@ public class AerienneController {
         }
 	}
 	
+	/**
+	 * Cette methode permet de supprimer une cargaison de la base de données en utilisant le lien "supprimer"
+	 * @param idAerienne
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/deleteAerienne")
     public String deleteAer(@RequestParam int idAerienne, Model model) {
         service.supprimerAerienne(idAerienne);
@@ -49,6 +70,13 @@ public class AerienneController {
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "aerienne";
     }
+	
+	/**
+	 * Cette methode permet de mettre les attributs d'une cargaison existante en BDD dans les champs afin de les modifier 
+	 * @param idAerienne
+	 * @param model
+	 * @return
+	 */
     @RequestMapping(value = "/editAerienne")
     public String editAer(@RequestParam int idAerienne, Model model) {
         model.addAttribute("aerienne", service.getAerienne(idAerienne));
