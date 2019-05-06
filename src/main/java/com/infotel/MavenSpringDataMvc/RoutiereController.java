@@ -19,7 +19,8 @@ public class RoutiereController {
 	@RequestMapping(value = "/indexRoutiere", method = RequestMethod.GET)
 	public String pageRoutiere(Model model) {
 		model.addAttribute("routiere", new Routiere()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
-		model.addAttribute("routieres", service.findAllRoutiere());		//remlpi la liste des cargaisons aeriennes en jsp
+		model.addAttribute("routieres", service.findAllRoutiere());	
+		model.addAttribute("societestransports", service.findAllSocieteTransport());//remlpi la liste des cargaisons aeriennes en jsp
 		return "routiere";									//designe la jsp
 	}
 	
@@ -29,11 +30,13 @@ public class RoutiereController {
             service.ajouterRoutiere(routiere);
             model.addAttribute("routiere", new Routiere());
             model.addAttribute("routieres", service.findAllRoutiere());
+            model.addAttribute("societestransports", service.findAllSocieteTransport());
             return "routiere";
         } else {
             service.modifierRoutiere(routiere);
             model.addAttribute("routiere", new Routiere());
             model.addAttribute("routieres", service.findAllRoutiere());
+            model.addAttribute("societestransports", service.findAllSocieteTransport());
             return "routiere";
         }
 	}
@@ -43,12 +46,14 @@ public class RoutiereController {
         service.supprimerRoutiere(idRoutiere);
         model.addAttribute("routiere", new Routiere());
         model.addAttribute("routieres", service.findAllRoutiere());
+        model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "routiere";
     }
     @RequestMapping(value = "/editRoutiere")
     public String editRout(@RequestParam int idRoutiere, Model model) {
         model.addAttribute("routiere", service.getRoutiere(idRoutiere));
         model.addAttribute("routieres", service.findAllRoutiere());
+        model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "routiere";
     }
 }

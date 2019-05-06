@@ -31,7 +31,11 @@
 				<tr>
 					<td>DateDeCreation:</td>
 					<td><f:input path="dateCreation" /></td>
+<<<<<<< HEAD
 					<td><f:errors path="dateCreation" type="date"  cssClass="error"/></td>
+=======
+					<td><f:errors path="dateCreation" type="date" cssClass="error"/></td>
+>>>>>>> branch 'master' of https://github.com/serviceshuios/montpartnasse-03-mai-equipe1.git
 				</tr>
 				<tr>
 					<td><input type="submit" value="enregistrer" /></td>

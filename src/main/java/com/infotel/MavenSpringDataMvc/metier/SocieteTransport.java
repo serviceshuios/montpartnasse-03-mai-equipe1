@@ -23,7 +23,8 @@ private String nomSociete;
 private String numSiret;
 private Date dateCreation;
 @OneToMany(mappedBy="societetransport")
-private List<Cargaison>cargaisons=new ArrayList<Cargaison>();
+private List<Cargaison>cargaisons;//=new ArrayList<Cargaison>();
+
 public List<Cargaison> getCargaisons() {
 	return cargaisons;
 }

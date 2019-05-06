@@ -44,6 +44,22 @@
 					<td><f:errors path="peage" cssClass="error"/></td>
 				</tr>
 				<tr>
+  					<td>
+  					<div>
+  					SOCIETE DE TRANSPORT : <select name="idSociete">
+						<optgroup>
+							<option value="0">---</option>
+							<c:if test="${not empty societestransports }">
+  							<c:forEach items="${societestransports }" var="a">
+  							<option value="${a.idSociete }"><c:out value="${a.nomSociete },${a.numSiret },${a.dateCreation }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
+  							</c:forEach>
+  							</c:if>
+						</optgroup></br>
+					</select>
+					</div>
+					</td>
+  				</tr>
+				<tr>
 					<td><input type="submit" value="enregistrer" /></td>
 				</tr>
 			</table>
