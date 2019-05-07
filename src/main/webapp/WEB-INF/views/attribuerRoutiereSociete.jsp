@@ -40,7 +40,7 @@
 							<c:if test="${not empty routieres }">
   							<c:forEach items="${routieres }" var="a">
   							<option value="${a.idCargaison }"><c:out value="${a.nomCargaison },${a.depart },${a.destination },${a.immatriculation },${a.peage }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
-  							</c:forEach>
+  							</c:forEach> 
   							</c:if>
 						</optgroup></br>
 					</select>
