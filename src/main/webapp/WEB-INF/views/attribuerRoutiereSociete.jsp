@@ -13,7 +13,7 @@
 <body>
 	<h2>Attribuer une cargaison à une societe de transport</h2>
 	<div>
-		<f:form modelAttribute="societetransport" method="POST" action="attribCargaisonSociete">
+		<f:form modelAttribute="aerienne" method="POST" action="attribAerienneSociete">
 			<table>
 				<tr>
   					<td>
@@ -24,22 +24,6 @@
 							<c:if test="${not empty societestransports }">
   							<c:forEach items="${societestransports }" var="a">
   							<option value="${a.idSociete }"><c:out value="${a.nomSociete },${a.numSiret },${a.dateCreation }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
-  							</c:forEach>
-  							</c:if>
-						</optgroup></br>
-					</select>
-					</div>
-					</td>
-  				</tr>
-				<tr>
-  					<td>
-  					<div>
-  					CARGAISONS AERIENNES : <select name="idCargaison">
-						<optgroup>
-							<option value="0">---</option>
-							<c:if test="${not empty aeriennes }">
-  							<c:forEach items="${aeriennes }" var="a">
-  							<option value="${a.idCargaison }"><c:out value="${a.nomCargaison },${a.depart },${a.destination },${a.numVol },${a.taxe }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
   							</c:forEach>
   							</c:if>
 						</optgroup></br>
