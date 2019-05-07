@@ -13,7 +13,7 @@
 <body>
 	<h2>Attribuer une cargaison à une societe de transport</h2>
 	<div>
-		<f:form modelAttribute="aerienne" method="POST" action="attribAerienneSociete">
+		<f:form modelAttribute="routiere" method="POST" action="attribRoutiereSociete">
 			<table>
 				<tr>
   					<td>

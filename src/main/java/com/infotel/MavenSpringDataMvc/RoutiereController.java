@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.infotel.MavenSpringDataMvc.metier.Aerienne;
 import com.infotel.MavenSpringDataMvc.metier.Routiere;
 import com.infotel.MavenSpringDataMvc.service.Iservice;
 
@@ -79,5 +80,37 @@ public class RoutiereController {
         model.addAttribute("routieres", service.findAllRoutiere());
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "routiere";
+    }
+    
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Attribution d'une cargaison à une societe ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    /**
+     *  Cette methode permet d'aller sur la jsp concernant l'attribution des cargaisons routieres à des societes
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/indexAttribRout", method = RequestMethod.GET)
+	public String pageAttribRout(Model model) {
+		model.addAttribute("routiere", new Routiere()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
+		model.addAttribute("routieres", service.findAllRoutiere());		//remlpi la liste des cargaisons aeriennes en jsp
+		model.addAttribute("societestransports", service.findAllSocieteTransport());		//remlpi la liste des cargaisons aeriennes en jsp
+		return "attribuerRoutiereSociete";									//designe la jsp
+	}
+    
+    /**
+     * Cette methode permet de lier une cargaison routiere à une societe de trnasport
+     * @param idSociete
+     * @param idCargaison
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/attribRoutiereSociete")
+	public String attribRout(@RequestParam int idSociete,@RequestParam int idCargaison, Model model) {
+		//if (aerienne.getIdCargaison() == 0) {
+            service.attribuerRoutiereSociete(idSociete, idCargaison);
+            model.addAttribute("routieres", service.findAllRoutiere());
+            model.addAttribute("societestransports", service.findAllSocieteTransport());
+            return "attribuerRoutiereSociete";
+        //}
     }
 }

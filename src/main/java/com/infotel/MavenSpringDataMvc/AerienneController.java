@@ -84,8 +84,13 @@ public class AerienneController {
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "aerienne";
     }
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Attribution d'une cargaison à une societe ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
+    /**
+     *  Cette methode permet d'aller sur la jsp concernant l'attribution des cargaisons aeriennes à des societes
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/indexAttribAer", method = RequestMethod.GET)
 	public String pageAttribAer(Model model) {
 		model.addAttribute("aerienne", new Aerienne()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
@@ -94,6 +99,13 @@ public class AerienneController {
 		return "attribuerAerienneSociete";									//designe la jsp
 	}
     
+    /**
+     * Cette methode permet de lier une cargaison aerienne à une societe de trnasport
+     * @param idSociete
+     * @param idCargaison
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/attribAerienneSociete")
 	public String attribAer(@RequestParam int idSociete,@RequestParam int idCargaison, Model model) {
 		//if (aerienne.getIdCargaison() == 0) {
