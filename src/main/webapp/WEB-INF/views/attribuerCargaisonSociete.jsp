@@ -11,56 +11,63 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>CRUD SocieteTransport</h2>
+	<h2>Attribuer une cargaison à une societe de transport</h2>
 	<div>
-		<f:form modelAttribute="societetransport" method="POST" action="saveSociete">
+		<f:form modelAttribute="societetransport" method="POST" action="attribCargaisonSociete">
 			<table>
 				<tr>
-					<td><f:hidden path="idSociete"/> </td>
-				</tr>
+  					<td>
+  					<div>
+  					SOCIETES DE TRANSPORT : <select name="idSociete">
+						<optgroup>
+							<option value="0">---</option>
+							<c:if test="${not empty societestransports }">
+  							<c:forEach items="${societestransports }" var="a">
+  							<option value="${a.idSociete }"><c:out value="${a.nomSociete },${a.numSiret },${a.dateCreation }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
+  							</c:forEach>
+  							</c:if>
+						</optgroup></br>
+					</select>
+					</div>
+					</td>
+  				</tr>
 				<tr>
-					<td>NomDeSociete:</td>
-					<td><f:input path="nomSociete" /></td>
-					<td><f:errors path="nomSociete" cssClass="error"/></td>
-				</tr>
+  					<td>
+  					<div>
+  					CARGAISONS AERIENNES : <select name="idCargaison">
+						<optgroup>
+							<option value="0">---</option>
+							<c:if test="${not empty aeriennes }">
+  							<c:forEach items="${aeriennes }" var="a">
+  							<option value="${a.idCargaison }"><c:out value="${a.nomCargaison },${a.depart },${a.destination },${a.numVol },${a.taxe }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
+  							</c:forEach>
+  							</c:if>
+						</optgroup></br>
+					</select>
+					</div>
+					</td>
+  				</tr>
 				<tr>
-					<td>NumDeSiret:</td>
-					<td><f:input path="numSiret" /></td>
-					<td><f:errors path="numSiret" cssClass="error"/></td>
-				</tr>
-				<tr>
-					<td>DateDeCreation:</td>
-					<td><f:input path="dateCreation" /></td>
-					<td><f:errors path="dateCreation" type="date"  cssClass="error"/></td>
-					<td><f:errors path="dateCreation" type="date" cssClass="error"/></td>
-				</tr>
+  					<td>
+  					<div>
+  					CARGAISONS ROUTIERES : <select name="idCargaison">
+						<optgroup>
+							<option value="0">---</option>
+							<c:if test="${not empty routieres }">
+  							<c:forEach items="${routieres }" var="a">
+  							<option value="${a.idCargaison }"><c:out value="${a.nomCargaison },${a.depart },${a.destination },${a.immatriculation },${a.peage }"/></option>		<!-- les id,nom,prenom,age correspondent aux attributs de la classe metier car je  -->				
+  							</c:forEach>
+  							</c:if>
+						</optgroup></br>
+					</select>
+					</div>
+					</td>
+  				</tr>
 				<tr>
 					<td><input type="submit" value="enregistrer" /></td>
 				</tr>
 			</table>
 		</f:form>
-	</div>
-	<div id="listProduits">
-		<table class="table1">
-			<tr>
-				<th>ID</th>
-				<th>NomDeSociete</th>
-				<th>NumDeSiret</th>
-				<th>DateCreation</th>
-				<th>SUPPRIMER</th>
-				<th>MODIFIER</th>
-			</tr>
-			<c:forEach var="s" items="${societestransports}">
-				<tr>
-					<td>${s.idSociete}</td>
-					<td>${s.nomSociete}</td>
-					<td>${s.numSiret}</td>
-					<td>${s.dateCreation}</td>
-					<td><a href="deleteSociete?idSociete=${s.idSociete}">supprimer</a></td>
-					<td><a href="editSociete?idSociete=${s.idSociete}">editer</a></td>
-				</tr>
-			</c:forEach>
-		</table>
 	</div>
 </body>
 </html>
