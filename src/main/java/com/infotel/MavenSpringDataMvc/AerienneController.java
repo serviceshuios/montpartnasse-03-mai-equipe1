@@ -84,4 +84,23 @@ public class AerienneController {
         model.addAttribute("societestransports", service.findAllSocieteTransport());
         return "aerienne";
     }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    @RequestMapping(value = "/indexAttribAer", method = RequestMethod.GET)
+	public String pageAttribAer(Model model) {
+		model.addAttribute("aerienne", new Aerienne()); 	//crée un pauchoir avec les attributs de la classe Aerienne sur le formulaire
+		model.addAttribute("aeriennes", service.findAllAerienne());		//remlpi la liste des cargaisons aeriennes en jsp
+		model.addAttribute("societestransports", service.findAllSocieteTransport());		//remlpi la liste des cargaisons aeriennes en jsp
+		return "attribuerAerienneSociete";									//designe la jsp
+	}
+    
+    @RequestMapping(value = "/attribAerienneSociete")
+	public String attribAer(@RequestParam int idSociete,@RequestParam int idCargaison, Model model) {
+		//if (aerienne.getIdCargaison() == 0) {
+            service.attribuerAerienneSociete(idSociete, idCargaison);
+            model.addAttribute("aeriennes", service.findAllAerienne());
+            model.addAttribute("societestransports", service.findAllSocieteTransport());
+            return "attribuerAerienneSociete";
+        //} 
+    }
 }
